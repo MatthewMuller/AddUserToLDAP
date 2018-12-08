@@ -1,0 +1,62 @@
+
+
+##############################################################################
+# This function is used to take in information about someone to add to the
+# LDAP and then create the text file LDAP needs when adding a user.
+##############################################################################
+def ldapuserfilemaker(firstName, lastName, userName, uid, gid):
+
+    try:
+        f = open("ldapUserEntry.txt", "x")      # creates the file if needed
+    except IOError:
+        f = open("ldapUserEntry.txt", "w")      # opens the file if it exist
+
+    f.write("dn: uid=" + userName + ",ou=users,dc=babbage,dc=augsburg,dc=edu" + "\n")
+    f.write("objectClass: posixAccount" + "\n")
+    f.write("objectClass: inetOrgPerson" + "\n")
+    f.write("objectClass: organizationalPerson" + "\n")
+    f.write("objectClass: Person" + "\n")
+    f.write("loginShell: /bin/bash" + "\n")
+    f.write("uid: " + userName + "\n")
+    f.write("cn: " + userName + "\n")
+    f.write("gecos: " + firstName + " " + lastName + "\n")
+    f.write("uidNumber: " + uid + "\n")
+    f.write("gidNumber: " + gid + "\n")
+    f.write("sn: " + lastName + "\n")
+    f.write("givenName: " + firstName + "\n")
+    f.write("homeDirectory: /nfs/home/" + userName)
+
+
+##############################################################################
+# This function is used to take in information about a group to add to the
+# LDAP and then create the text file LDAP needs when adding a group.
+##############################################################################
+def ldapgroupfilemaker(firstName, lastname, userName, uid, gid):
+
+    try:
+        f = open("ldapGroupEntry.txt", "x")     # creates the file if needed
+    except IOError:
+        f = open("ldapGroupEntry.txt", "a")     # opens the file if it exist
+
+
+##############################################################################
+#
+##############################################################################
+def testldapuserfilemaker():
+
+    firstName = "John"
+    lastName = "Doe"
+    username = "doej"
+    uid = "1000"
+    gid = "1000"
+    ldapuserfilemaker(firstName, lastName, username, uid, gid)
+
+
+##############################################################################
+#
+##############################################################################
+def main():
+
+    testldapuserfilemaker()
+
+main()
