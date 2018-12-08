@@ -40,7 +40,9 @@ def ldapgroupfilemaker(firstName, lastname, userName, uid, gid):
 
 
 ##############################################################################
-#
+# This function test the output of the ldapuserfilemaker() function. It has
+# canned data and will populate the output file with it so you can see how
+# the layout will look.
 ##############################################################################
 def testldapuserfilemaker():
 
