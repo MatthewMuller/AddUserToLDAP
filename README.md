@@ -5,8 +5,11 @@ This repository is a project that contains a program used to add users to the LD
 ## Contents
 
 * Background
-    * [Add New User to the Ubunutu Operating System](#Add-New-User-to-the-Ubuntu-Operating-System)
-    * [Foo](#foo)
+    * Add New User to the Ubuntu Operating System
+    * Add the user to the LDAP
+    * Add a new group to the LDAP that matches the new user
+    * Add the user to the new group
+    
 
 
 ## Background - What has to be done to add a user to the LDAP?
@@ -26,7 +29,6 @@ First, we have to create a user on the server where the LDAP is being hosted. Th
 
 Why do we need this user on the OS in addition to the LDAP?
 * We are going to use LDAP to not only authenticate login, but to grant access to a specific NFS mount. Having a specific user on the server hosting the LDAP (Babbage) enables us to restrict access inside the folders that are to be mounted. For example, one user will have access to their specific NFS folder, but not others. 
-
 
 #### Add the User to the LDAP
 
@@ -62,19 +64,44 @@ Once this file has been created, we will actually add this user to the LDAP. We 
 ldapadd -x -W -D "cn=doej,dc=babbage,dc=augsburg,dc=edu" -f ldapUserToAdd.ldif
 ```
 
+You have now successfully added a user to the LDAP!
 
 #### Add a New Group to the LDAP That Matches the New User
+
+Now we will have to add a group to the LDAP that matches the user. This is because Ubuntu files have access based upon user and groups. We want the files being mounted by the NFS to have the same user and group and having the LDAP user and group match make this simple. **Summary:** We are assigning each user to their own group in the LDAP and files mounted by NFS will all have matching User and Group attributes. 
+
+To add a new group, we must create a LDIF file that will hold all the information the LDAP requires to to add a group.
+
+``` 
+dn: cn=doej,ou=groups,dc=babbage,dc=augsburg,dc=edu
+objectClass: top
+objectClass: posixGroup
+gidNumber: 1000
+```
+
+**Notice:**
+* "ou=groups" is correct. This is because the group we are creating is a group inside of a group. Change "cn=doej" to "cn=[username]" to change the name of the group you are adding.
+* gidNumber in this example is 1000, but this number needs to match the gidNumber of the user you are creating the group for. Otherwise, they will not be able to be added to this group. 
+
+Once this file has been created, we will run the command below to actually add the group the LDAP server (Pretend the above file is saved as ldapGroupToAdd.ldif).
+
+``` 
+ldapadd -x -W -D "cn=doej,dc=babbage,dc=augsburg,dc=edu" -f ldapGroupToadd.ldif
+
+```
+You have now successfully added a group to the LDAP!
 
 #### Add the User to the New Group
 
 
-### ldapFilemaker
+
+## ldapFilemaker
 
 This program is used to generate 3 files the LDAP will need in order to add a user to the LDAP. 
 
 
 
-# Footnote
+## Footnote
 
 [1]: https://www.thegeekstuff.com/2015/02/openldap-add-users-groups.
 
