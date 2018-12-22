@@ -2,6 +2,10 @@ LDAP text file formatting and info about adding user
 
     https://www.thegeekstuff.com/2015/02/openldap-add-users-groups
 
+    another good source for this info*****
+
+    https://www.learnitguide.net/2017/11/how-to-create-ldap-users-and-groups.html
+
 LDAP group schema
 
     ####Taken from ldap export in LAM

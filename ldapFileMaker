@@ -26,19 +26,6 @@ def ldapuserfilemaker(firstName, lastName, userName, uid, gid):
     f.write("givenName: " + firstName + "\n")
     f.write("homeDirectory: /nfs/home/" + userName)
 
-
-##############################################################################
-# This function is used to take in information about a group to add to the
-# LDAP and then create the text file LDAP needs when adding a group.
-##############################################################################
-def ldapgroupfilemaker(firstName, lastname, userName, uid, gid):
-
-    try:
-        f = open("ldapGroupEntry.txt", "x")     # creates the file if needed
-    except IOError:
-        f = open("ldapGroupEntry.txt", "a")     # opens the file if it exist
-
-
 ##############################################################################
 # This function test the output of the ldapuserfilemaker() function. It has
 # canned data and will populate the output file with it so you can see how
@@ -53,12 +40,46 @@ def testldapuserfilemaker():
     gid = "1000"
     ldapuserfilemaker(firstName, lastName, username, uid, gid)
 
+##############################################################################
+# This function is used to take in information about a group to add to the
+# LDAP and then create the text file LDAP needs when adding a group.
+##############################################################################
+def ldapgroupfilemaker(userName, gid):
+
+    try:
+        f = open("ldapGroupEntry.txt", "x")     # creates the file if needed
+    except IOError:
+        f = open("ldapGroupEntry.txt", "w")     # opens the file if it exist
+
+    f.write("dn: cn=" + userName + ",ou=groups,dc=babbage,dc=augsburg,dc=edu\n")
+    f.write("objectClass: top\n")
+    f.write("objectClass: posixGroup\n")
+    f.write("gidNumber:" + gid)
+
+##############################################################################
+# This function test the output of the ldapuserfilemaker() function. It has
+# canned data and will populate the output file with it so you can see how
+# the layout will look.
+##############################################################################
+def testldapgroupfilemaker():
+
+    firstName = "John"
+    lastName = "Doe"
+    username = "doej"
+    uid = "1000"
+    gid = "1000"
+    ldapgroupfilemaker(username, gid)
+
+
+
 
 ##############################################################################
 #
 ##############################################################################
 def main():
 
-    testldapuserfilemaker()
+    testldapuserfilemaker()     # Test the user file maker to see output
+    testldapgroupfilemaker()    # Test the group file maker to see output
+
 
 main()
