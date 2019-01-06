@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f70b6cb-e070-48f1-98d2-c6af0ba78137" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AddUserToLDAP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AddUserToLDAP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/HelpfulLinks" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/HelpfulLinks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation/LDAP Schema Command And Printout" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation/LDAP Schema Command And Printout" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ldapFileMaker" beforeDir="false" afterPath="$PROJECT_DIR$/ldapFileMaker" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ldapFileMaker">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="73" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="464">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
             </state>
           </provider>
         </entry>
@@ -35,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/ldapGroupEntry.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -49,23 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="195">
-                <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ldapUserEntry.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+              <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -80,8 +59,8 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Documentation/HelpfulLinks" />
-        <option value="$PROJECT_DIR$/ldapFileMaker" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/ldapFileMaker" />
       </list>
     </option>
   </component>
@@ -97,6 +76,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -113,7 +93,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -137,8 +116,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="ldapFileMaker" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.groupFileMaker">
+    <configuration name="BadParams" type="PythonConfigurationType" factoryName="Python">
       <module name="AddUserToLDAP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -151,7 +130,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldapFileMaker" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="cannedinput1 cannedinput2 cannedinput3" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -159,6 +138,53 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="groupFileMaker" type="PythonConfigurationType" factoryName="Python">
+      <module name="AddUserToLDAP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldapFileMaker" />
+      <option name="PARAMETERS" value="doej 1001" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="userFileMaker" type="PythonConfigurationType" factoryName="Python">
+      <module name="AddUserToLDAP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ldapFileMaker" />
+      <option name="PARAMETERS" value="John Doe doej 1001 1001" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.groupFileMaker" />
+      <item itemvalue="Python.BadParams" />
+      <item itemvalue="Python.userFileMaker" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -185,7 +211,35 @@
       <option name="project" value="LOCAL" />
       <updated>1544242479158</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated ldapFileMaker to make the group file for the ldif. Also I have started expanding the README so the development of this tool is more straight forward and not scattered. Once the README is completed (updated), the road map of what to do will be more clear.">
+      <created>1545442772064</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545442772065</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adding more to readme. Adding table of contents and background information about adding a user to the LDAP.">
+      <created>1545447837307</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1545447837307</updated>
+    </task>
+    <task id="LOCAL-00005" summary="STILL Adding more to readme. Adding table of contents and background information about adding a user to the LDAP.">
+      <created>1545450068756</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545450068756</updated>
+    </task>
+    <task id="LOCAL-00006" summary="README has been updated to the point where the explanation of how to add users and groups is completed. README still needs to speak about the program. Now we are ready to continue writing the python / bash program to automate the process talked about in the README background section.">
+      <created>1545451189496</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1545451189496</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -214,7 +268,10 @@
     <MESSAGE value="Moved a document into the documentation folder. Also added a README (needs much work)." />
     <MESSAGE value="Added a helpful links text file.&#10;&#10;As for ldapFileMaker, I added a function to create the file the LDAP needs when adding a user and wrote a test to print it out. Will now work on the file needed when making a group in the LDAP." />
     <MESSAGE value="Updated ldapFileMaker to make the group file for the ldif. Also I have started expanding the README so the development of this tool is more straight forward and not scattered. Once the README is completed (updated), the road map of what to do will be more clear." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated ldapFileMaker to make the group file for the ldif. Also I have started expanding the README so the development of this tool is more straight forward and not scattered. Once the README is completed (updated), the road map of what to do will be more clear." />
+    <MESSAGE value="Adding more to readme. Adding table of contents and background information about adding a user to the LDAP." />
+    <MESSAGE value="STILL Adding more to readme. Adding table of contents and background information about adding a user to the LDAP." />
+    <MESSAGE value="README has been updated to the point where the explanation of how to add users and groups is completed. README still needs to speak about the program. Now we are ready to continue writing the python / bash program to automate the process talked about in the README background section." />
+    <option name="LAST_COMMIT_MESSAGE" value="README has been updated to the point where the explanation of how to add users and groups is completed. README still needs to speak about the program. Now we are ready to continue writing the python / bash program to automate the process talked about in the README background section." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -227,10 +284,13 @@
     <entry file="file://$PROJECT_DIR$/Documentation/LDAP Schema Command And Printout">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ldapGroupEntry.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="411">
+            <caret line="104" column="114" lean-forward="true" selection-start-line="104" selection-start-column="114" selection-end-line="104" selection-end-column="114" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -241,27 +301,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ldapFileMaker">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ldapUserEntry.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="195">
-            <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/ldapGroupEntry.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ldapFileMaker">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
         </state>
       </provider>
     </entry>

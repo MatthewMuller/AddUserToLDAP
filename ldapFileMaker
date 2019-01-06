@@ -1,3 +1,4 @@
+import sys
 
 
 ##############################################################################
@@ -54,7 +55,7 @@ def ldapgroupfilemaker(userName, gid):
     f.write("dn: cn=" + userName + ",ou=groups,dc=babbage,dc=augsburg,dc=edu\n")
     f.write("objectClass: top\n")
     f.write("objectClass: posixGroup\n")
-    f.write("gidNumber:" + gid)
+    f.write("gidNumber: " + gid)
 
 ##############################################################################
 # This function test the output of the ldapuserfilemaker() function. It has
@@ -70,6 +71,29 @@ def testldapgroupfilemaker():
     gid = "1000"
     ldapgroupfilemaker(username, gid)
 
+##############################################################################
+# This function test the output of the ldapuserfilemaker() function. It has
+# canned data and will populate the output file with it so you can see how
+# the layout will look.
+##############################################################################
+def badparameters():
+
+    # The lines below build a string called args of all
+    # the command line arguments
+    args = ""
+    for i in range(1, len(sys.argv)):
+        if i + 1 == len(sys.argv):  # if its the last arg
+            args += sys.argv[i]  # append only arg
+        else:
+            args += sys.argv[i] + ", "  # append arg and comma
+
+    numargs = len(sys.argv) - 1
+
+    print("INPUT ERROR\n")
+    print("Received " + str(numargs) + " argument/s")
+    print("Arguments - " + args)
+    print("Require 5 arguments to make user LDIF file")
+    print("Require 2 arguments to make group LDIF file")
 
 
 
@@ -78,8 +102,31 @@ def testldapgroupfilemaker():
 ##############################################################################
 def main():
 
-    testldapuserfilemaker()     # Test the user file maker to see output
-    testldapgroupfilemaker()    # Test the group file maker to see output
+    #################################################
+    #                     DEBUG                     #
+    # Uncomment the two functions below to have     #
+    # files made of the canned data in the methods  #
+    # being called.                                 #
+    #################################################
+
+    # testldapuserfilemaker()     # Test the user file maker to see output
+    # testldapgroupfilemaker()    # Test the group file maker to see output
+
+    # if the file to make is user LDIF
+    if len(sys.argv) == 6:
+        # sys.argv[1] - first name
+        # sys.argv[2] - last name
+        # sys.argv[3] - userName
+        # sys.argv[4] - uid
+        # sys.argv[5] - gid
+        ldapuserfilemaker(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+    # if the file to make is group LDIF
+    elif len(sys.argv) == 3:
+        # sys.argv[1] - userName
+        # sys.argv[2] - gid
+        ldapgroupfilemaker(sys.argv[1], sys.argv[2])
+    else:
+        badparameters()
 
 
 main()
