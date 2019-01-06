@@ -1,2 +1,6 @@
 #Blocks any os files from mac file systems
 DS_Store
+
+#Ignore the files the program creates
+ldapUserEntry.txt
+ldapGroupEntry.txt
