@@ -1,0 +1,4 @@
+dn: cn=John,ou=groups,dc=babbage,dc=augsburg,dc=edu
+objectClass: top
+objectClass: posixGroup
+gidNumber: 1004
