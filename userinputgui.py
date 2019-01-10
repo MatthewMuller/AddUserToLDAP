@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 '''
 This function is used to build the GUI used to enter information
@@ -80,18 +81,42 @@ and return them to the gui.
 
 def add_user_button_pressed(fn, ln, un, pw, vp, ap):
 
-    # If the passwords don't match, let the user know!
+    # If the passwords don't match, let the user know and go back to main gui
     if pw.get() != vp.get():
-        popup_window = tk.Tk()
-        popup_window.wm_title("Password Error")
-        popup_label = tk.Label(popup_window, text="Passwords Don't Match. Try again!")
-        popup_label.grid(column=0, row=0, padx=(20, 20), pady=(20, 20))
-        popup_button = tk.Button(popup_window, text="Okay", command=popup_window.destroy)
-        popup_button.grid(column=0, row=1, padx=(20, 20), pady=(20, 20))
+        messagebox.showinfo("Passwords Don't Match!", "The passwords entered by the user do not match!")
+        return
 
-    # TODO add the check to see if all fields are full
-        
+    # If any of the fields are empty, let the user know and go back to main gui
+    if fn.index("end") == 0 or ln.index("end") == 0 or un.index("end") == 0 \
+            or pw.index("end") == 0 or vp.index("end") == 0 or ap.index("end") == 0:
+        messagebox.showinfo("Empty Fields!", "Not all entry fields have been populated.")
+        return
 
+    # Check to see if the last name is in the user name. If not, warn the
+    # user the username could possibly be incorrect
+    if str(ln.get()) not in str(un.get()):
+        messagebox.showinfo("Warning!", "The username does not contain the last name! The entry might not be correct.")
+
+    # Verify with the user they truly want to add new user to LDAP
+    add_user_last_chance_verification_popup(fn, ln, un, pw, ap)
+
+
+def add_user_last_chance_verification_popup(fn, ln, un, pw, ap):
+    popup_window = tk.Tk()
+    popup_window.wm_title("Verify")
+    popup_label = tk.Label(popup_window, text="Are you sure you want to add this user to the LDAP?")
+    popup_label.grid(column=0, row=0, columnspan=2, padx=(20, 20), pady=(20, 20))
+    popup_button = tk.Button(popup_window, text="Add To LDAP",
+                             command=lambda: pipe_input_to_script(fn, ln, un, pw, ap))
+    popup_button.grid(column=0, row=1, padx=(20, 20), pady=(20, 20))
+    popup_button = tk.Button(popup_window, text="Go Back", command=popup_window.destroy)
+    popup_button.grid(column=1, row=1, padx=(20, 20), pady=(20, 20))
+
+
+def pipe_input_to_script(fn, ln, un, pw, ap):
+    # TODO write a function that pipes the user input to the bash script
+
+    exit()
 
 '''
 Main driver that builds and launches the gui
