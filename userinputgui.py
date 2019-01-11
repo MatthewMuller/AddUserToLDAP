@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
+import sys
+
 
 '''
 This function is used to build the GUI used to enter information
@@ -115,8 +117,42 @@ def add_user_last_chance_verification_popup(fn, ln, un, pw, ap):
 
 def pipe_input_to_script(fn, ln, un, pw, ap):
     # TODO write a function that pipes the user input to the bash script
+    # This needs to be tested inside of a bash script
+    # Output will collect these in an array and terminate at sentinel value -1
+    sys.stdout.write(fn.get() + ",")
+    sys.stdout.write(ln.get() + ",")
+    sys.stdout.write(un.get() + ",")
+    sys.stdout.write(pw.get() + ",")
+    sys.stdout.write(ap.get())
 
     exit()
+
+
+def test_pipe_input_to_script():
+
+    window = tk.Tk()
+    window = gui(window)
+
+    fne = tk.Entry(window)
+    lne = tk.Entry(window)
+    une = tk.Entry(window)
+    pwe = tk.Entry(window)
+    ape = tk.Entry(window)
+
+    fn = "John"
+    ln = "Doe"
+    un = "Doej"
+    pw = "doe"
+    ap = "123"
+
+    fne.insert(0, fn)
+    lne.insert(0, ln)
+    une.insert(0, un)
+    pwe.insert(0, pw)
+    ape.insert(0, ap)
+
+    pipe_input_to_script(fne, lne, une, pwe, ape)
+
 
 '''
 Main driver that builds and launches the gui
@@ -124,7 +160,18 @@ Main driver that builds and launches the gui
 
 
 if __name__ == "__main__":
+
+    ##########################
+    #      DEBUG AREA        #
+    ##########################
+    test_pipe_input_to_script()
+
+    ##########################
+    #      MAIN PROGRAM      #
+    ##########################
+
     inputWindow = tk.Tk()
     inputWindow = gui(inputWindow)
     inputWindow.mainloop()
+
 
