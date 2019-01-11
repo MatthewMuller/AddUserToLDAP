@@ -4,3 +4,7 @@ DS_Store
 #Ignore the files the program creates
 ldapUserEntry.txt
 ldapGroupEntry.txt
+
+#Idea files from pycharm ignored
+.idea/*
+.idea
