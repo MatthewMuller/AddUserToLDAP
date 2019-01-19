@@ -1,4 +1,4 @@
-dn: cn=doej,ou=groups,dc=babbage,dc=augsburg,dc=edu
+dn: cn=delgadoa,ou=groups,dc=babbage,dc=augsburg,dc=edu
 changetype: modify
 add: uid
-uid: doej
+uid: delgadoa

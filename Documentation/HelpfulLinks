@@ -44,3 +44,33 @@ LDAP user schema
     sn: Muller
     givenName: Matthew
     homeDirectory: /nfs/home/mullermm
+
+
+
+
+ldapadd -x -W -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -f ldapUserEntry.ldif
+
+ldappasswd -s welcome123 -W -D "cn=ramesh,dc=tgs,dc=com" -x "uid=delgadoa,ou=users,dc=tgs,dc=com"
+
+ldapadd -x -W -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -f ldapGroupEntry.ldif
+
+ldapmodify -x -W -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -f ldapAddToGroup.ldif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

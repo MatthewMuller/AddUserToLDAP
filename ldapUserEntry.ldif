@@ -1,14 +1,14 @@
-dn: uid=doej,ou=users,dc=babbage,dc=augsburg,dc=edu
+dn: uid=delgadoa,ou=users,dc=babbage,dc=augsburg,dc=edu
 objectClass: posixAccount
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: Person
 loginShell: /bin/bash
-uid: doej
-cn: doej
-gecos: John Doe
-uidNumber: 1004
-gidNumber: 1004
-sn: Doe
-givenName: John
-homeDirectory: /nfs/home/doej
+uid: delgadoa
+cn: delgadoa
+gecos: Alexis Delgado
+uidNumber: 1006
+gidNumber: 1006
+sn: Delgado
+givenName: Alexis
+homeDirectory: /nfs/home/delgadoa

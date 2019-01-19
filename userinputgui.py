@@ -119,11 +119,11 @@ def pipe_input_to_script(fn, ln, un, pw, ap):
     # TODO write a function that pipes the user input to the bash script
     # This needs to be tested inside of a bash script
     # Output will collect these in an array and terminate at sentinel value -1
-    sys.stdout.write(fn.get() + ",")
-    sys.stdout.write(ln.get() + ",")
-    sys.stdout.write(un.get() + ",")
-    sys.stdout.write(pw.get() + ",")
-    sys.stdout.write(ap.get())
+    sys.stderr.write(fn.get() + ",")
+    sys.stderr.write(ln.get() + ",")
+    sys.stderr.write(un.get() + ",")
+    sys.stderr.write(pw.get() + ",")
+    sys.stderr.write(ap.get())
 
     exit()
 
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     ##########################
     #      DEBUG AREA        #
     ##########################
-    test_pipe_input_to_script()
+    #test_pipe_input_to_script()
 
     ##########################
     #      MAIN PROGRAM      #
