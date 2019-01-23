@@ -1,4 +1,4 @@
-dn: cn=Alexis,ou=groups,dc=babbage,dc=augsburg,dc=edu
+dn: cn=test,ou=groups,dc=babbage,dc=augsburg,dc=edu
 objectClass: top
 objectClass: posixGroup
-gidNumber: 1006
+gidNumber: 1007

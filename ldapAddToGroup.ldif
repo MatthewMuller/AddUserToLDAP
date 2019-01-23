@@ -1,4 +1,4 @@
-dn: cn=delgadoa,ou=groups,dc=babbage,dc=augsburg,dc=edu
+dn: cn=dummyt,ou=groups,dc=babbage,dc=augsburg,dc=edu
 changetype: modify
 add: uid
-uid: delgadoa
+uid: dummyt

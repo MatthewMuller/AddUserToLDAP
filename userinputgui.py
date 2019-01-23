@@ -139,11 +139,11 @@ def test_pipe_input_to_script():
     pwe = tk.Entry(window)
     ape = tk.Entry(window)
 
-    fn = "John"
-    ln = "Doe"
-    un = "Doej"
-    pw = "doe"
-    ap = "123"
+    fn = "test" 
+    ln = "dummy"
+    un = "dummyt"
+    pw = "1234"
+    ap = "Hex6b6e6f6c6c"
 
     fne.insert(0, fn)
     lne.insert(0, ln)
@@ -164,14 +164,14 @@ if __name__ == "__main__":
     ##########################
     #      DEBUG AREA        #
     ##########################
-    #test_pipe_input_to_script()
+    test_pipe_input_to_script()
 
     ##########################
     #      MAIN PROGRAM      #
     ##########################
 
-    inputWindow = tk.Tk()
-    inputWindow = gui(inputWindow)
-    inputWindow.mainloop()
+    #inputWindow = tk.Tk()
+    #inputWindow = gui(inputWindow)
+    #inputWindow.mainloop()
 
 

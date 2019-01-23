@@ -1,14 +1,14 @@
-dn: uid=delgadoa,ou=users,dc=babbage,dc=augsburg,dc=edu
+dn: uid=dummyt,ou=users,dc=babbage,dc=augsburg,dc=edu
 objectClass: posixAccount
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
 objectClass: Person
 loginShell: /bin/bash
-uid: delgadoa
-cn: delgadoa
-gecos: Alexis Delgado
-uidNumber: 1006
-gidNumber: 1006
-sn: Delgado
-givenName: Alexis
-homeDirectory: /nfs/home/delgadoa
+uid: dummyt
+cn: dummyt
+gecos: test dummy
+uidNumber: 1007
+gidNumber: 1007
+sn: dummy
+givenName: test
+homeDirectory: /nfs/home/dummyt
