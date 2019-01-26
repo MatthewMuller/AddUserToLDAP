@@ -10,6 +10,8 @@ userinput=$(python3 userinputgui.py 2>&1);
 #Split the userinput into values in an array
 IFS=',' read -ra arr<<< "$userinput"
 
+
+
 ##########################################
 #	SSH In to add user to babbage
 ##########################################
@@ -24,13 +26,13 @@ uid=$(sshpass -p ${arr[4]} ssh -t -o LogLevel=QUIET administrator@141.224.38.247
 sshpass -p ${arr[4]} ssh -t -o LogLevel=QUIET administrator@141.224.38.247 "echo ${arr[4]} | sudo -S echo ${arr[2]}; (echo ${arr[3]}; echo ${arr[3]};) | sudo passwd ${arr[2]}"
 ##########################################
 
+
+
 # make the ldif files for the ldap server
-python3 ldapFileMaker.py ${arr[0]} ${arr[1]} ${arr[2]} $uid ${arr[3]} ${arr[4]}
+python3 ldapFileMaker.py ${arr[0]} ${arr[1]} ${arr[2]} $uid $uid
 
 # copy the ldif files over to babbage
-sshpass -p ${arr[4]} scp -r $PWD/LDIFFiles administrator@141.224.38.247:/home/administrator
-
-# run the addToLDAP.sh script
-sshpass -p ${arr[4]} ssh -t -o LogLevel=QUIET administrator@141.224.38.247 "echo ${arr[4]} | sudo -S sh /home/administrator/LDIFFiles/addToLDAP.sh"
+echo $PWD;
+scp -r $PWD/LDIFFiles administrator@141.224.38.247:/home/administrator
 
 

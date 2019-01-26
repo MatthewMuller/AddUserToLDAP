@@ -6,7 +6,7 @@ import os
 # This function is used to take in information about someone to add to the
 # LDAP and then create the text file LDAP needs when adding a user.
 ##############################################################################
-def ldapuserfilemaker(firstname, lastname, username, uid, gid):
+def ldap_user_file_maker(first_name, last_name, username, uid, gid):
 
     try:
         f = open("ldapUserEntry.ldif", "x")      # creates the file if needed
@@ -21,11 +21,11 @@ def ldapuserfilemaker(firstname, lastname, username, uid, gid):
     f.write("loginShell: /bin/bash" + "\n")
     f.write("uid: " + username + "\n")
     f.write("cn: " + username + "\n")
-    f.write("gecos: " + firstname + " " + lastname + "\n")
+    f.write("gecos: " + first_name + " " + last_name + "\n")
     f.write("uidNumber: " + uid + "\n")
     f.write("gidNumber: " + gid + "\n")
-    f.write("sn: " + lastname + "\n")
-    f.write("givenName: " + firstname + "\n")
+    f.write("sn: " + last_name + "\n")
+    f.write("givenName: " + first_name + "\n")
     f.write("homeDirectory: /nfs/home/" + username)
 
 
@@ -33,7 +33,7 @@ def ldapuserfilemaker(firstname, lastname, username, uid, gid):
 # This function is used to take in information about a group to add to the
 # LDAP and then create the text file LDAP needs when adding a group.
 ##############################################################################
-def ldapgroupfilemaker(username, gid):
+def ldap_group_file_maker(username, gid):
 
     try:
         f = open("ldapGroupEntry.ldif", "x")     # creates the file if needed
@@ -50,7 +50,7 @@ def ldapgroupfilemaker(username, gid):
 # This function is used to take in information about a group to add to the
 # LDAP and then create the text file LDAP needs when adding a group.
 ##############################################################################
-def addUserToGroup(username):
+def add_user_to_group(username):
 
     try:
         f = open("ldapAddToGroup.ldif", "x")     # creates the file if needed
@@ -64,11 +64,35 @@ def addUserToGroup(username):
 
 
 ##############################################################################
+# This function is used to make the bash script that contains the commands
+# to actually add the new ldap user to the ldap database
+##############################################################################
+def ldap_script_for_babbage(username, pw, apw):
+
+    try:
+        f = open("addToLDAP.sh", "x")      # creates the file if needed
+    except IOError:
+        f = open("addToLDAP.sh", "w")      # opens the file if it exist
+
+    f.write("\necho \"-Add User-\"\n")
+    f.write("ldapadd -x -w " + apw + " -D \"cn=admin,dc=babbage,dc=augsburg,dc=edu\" -f /home/administrator/LDIFFiles/ldapUserEntry.ldif;" + "\n")
+    f.write("\necho \"-Set User PW-\"\n")
+    f.write("ldappasswd -s " + pw + " -w " + apw + " -D \"cn=admin,dc=babbage,dc=augsburg,dc=edu\" -x \"uid=" + username + ",ou=users,dc=babbage,dc=augsburg,dc=edu\";" + "\n")
+    f.write("\necho \"-Add Group-\"\n")
+    f.write("ldapadd -x -w " + apw + " -D \"cn=admin,dc=babbage,dc=augsburg,dc=edu\" -f /home/administrator/LDIFFiles/ldapGroupEntry.ldif;" + "\n")
+    f.write("\necho \"-Add User to Group-\"\n")
+    f.write("ldapmodify -x -w " + apw + " -D \"cn=admin,dc=babbage,dc=augsburg,dc=edu\" -f /home/administrator/LDIFFiles/ldapAddToGroup.ldif;" + "\n")
+    f.write("\necho \"-Remove Files-\"\n")
+    f.write("echo $apw | sudo -S rm -fr /home/administrator/LDIFFiles" + "\n")
+
+
+
+##############################################################################
 # This function creates output based upon the parameters handed into the
 # python script. This function is to be called when the parameters are not
 # good.
 ##############################################################################
-def badparameters():
+def bad_parameters():
 
     # The lines below build a string called args of all
     # the command line arguments
@@ -79,12 +103,13 @@ def badparameters():
         else:
             args += sys.argv[i] + ", "  # append arg and comma
 
-    numargs = len(sys.argv) - 1
+    num_args = len(sys.argv) - 1
 
-    print("INPUT ERROR\n")
-    print("Received " + str(numargs) + " argument/s")
+    print("-----------")
+    print("INPUT ERROR in ldapFileMaker.py")
+    print("Received " + str(num_args) + " argument/s")
     print("Arguments - " + args)
-    print("Require 6 arguments to make files for adding user/group to LDAP")
+    print("Require 7 arguments to make files for adding user/group to LDAP")
 
 
 ##############################################################################
@@ -92,11 +117,11 @@ def badparameters():
 # canned data and will populate the output file with it so you can see how
 # the layout will look.
 ##############################################################################
-def testldapgroupfilemaker():
+def test_ldap_group_file_maker():
 
     username = "doej"
     gid = "1000"
-    ldapgroupfilemaker(username, gid)
+    ldap_group_file_maker(username, gid)
 
 
 ##############################################################################
@@ -104,14 +129,14 @@ def testldapgroupfilemaker():
 # canned data and will populate the output file with it so you can see how
 # the layout will look.
 ##############################################################################
-def testldapuserfilemaker():
+def test_ldap_user_file_maker():
 
-    firstName = "John"
-    lastName = "Doe"
-    username = "doej"
+    first_name = "John"
+    last_name = "Doe"
+    user_name = "doej"
     uid = "1000"
     gid = "1000"
-    ldapuserfilemaker(firstName, lastName, username, uid, gid)
+    ldap_user_file_maker(first_name, last_name, user_name, uid, gid)
 
 
 ##############################################################################
@@ -119,10 +144,10 @@ def testldapuserfilemaker():
 # canned data and will populate the output file with it so you can see how
 # the layout will look.
 ##############################################################################
-def testaddUserToGroup():
+def test_add_user_to_group():
 
     username = "doej"
-    addUserToGroup(username)
+    add_user_to_group(username)
 
 
 ##############################################################################
@@ -132,31 +157,39 @@ def main():
 
     #################################################
     #                     DEBUG                     #
-    # Uncomment the two functions below to have     #
+    # Uncomment the functions below to have         #
     # files made of the canned data in the methods  #
     # being called.                                 #
     #################################################
 
-    # testldapuserfilemaker()     # Test the user file maker to see output
-    # testldapgroupfilemaker()    # Test the group file maker to see output
-    # testaddUserToGroup()        # Test the add user to group file maker
+    # test_ldap_user_file_maker()     # Test the user file maker to see output
+    # test_ldap_group_file_maker()    # Test the group file maker to see output
+    # test_add_user_to_group()        # Test the add user to group file maker
 
-    # if the file to make is user LDIF
-    if len(sys.argv) == 6:
-        ### sys.argv[1] - first name
-        ### sys.argv[2] - last name
-        ### sys.argv[3] - userName
-        ### sys.argv[4] - uid
-        ### sys.argv[5] - gid
-        ldapuserfilemaker(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
-        ldapgroupfilemaker(sys.argv[1], sys.argv[5])
-        addUserToGroup(sys.argv[3])
+    # if the numbe rof params are correct, make the ldif files
+    if len(sys.argv) == 7:
+
+        ############################
+        # System args - what it is #
+        # sys.argv[1] - first name #
+        # sys.argv[2] - last name  #
+        # sys.argv[3] - userName   #
+        # sys.argv[4] - uid/gid    #
+        # sys.argv[5] - user pw    #
+        # sys.argv[6] - admin pw   #
+        ############################
+        ldap_user_file_maker(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[4])
+        ldap_group_file_maker(sys.argv[3], sys.argv[4])
+        add_user_to_group(sys.argv[3])
+        ldap_script_for_babbage(sys.argv[3], sys.argv[5], sys.argv[6])
+
         os.rename("ldapAddToGroup.ldif", "LDIFFiles/ldapAddToGroup.ldif")
         os.rename("ldapGroupEntry.ldif", "LDIFFiles/ldapGroupEntry.ldif")
-        os.rename("ldapUserEntry.ldif", "LDIFFiles/ldapUserEntry.ldif")	
+        os.rename("ldapUserEntry.ldif", "LDIFFiles/ldapUserEntry.ldif")
+        os.rename("addToLDAP.sh", "LDIFFiles/addToLDAP.sh")
         print("ldif files have been created")
     else:
-        badparameters()
+        bad_parameters()
 
 
 main()

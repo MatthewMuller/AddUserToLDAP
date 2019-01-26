@@ -66,7 +66,7 @@ ldapadd -x -W -D "cn=doej,dc=babbage,dc=augsburg,dc=edu" -f ldapUserToAdd.ldif
 
 You have now successfully added a user to the LDAP!
 
-#### Add a New Group to the LDAP That Matches the New User
+#### Add a New Group to the LDAP That Matches the New User (FIX COMMAND INFO! NEEDS TO BE ADMINISTRATOR, NOT doej!)
 
 Now we will have to add a group to the LDAP that matches the user. This is because Ubuntu files have access based upon user and groups. We want the files being mounted by the NFS to have the same user and group and having the LDAP user and group match make this simple. **Summary:** We are assigning each user to their own group in the LDAP and files mounted by NFS will all have matching User and Group attributes. 
 
@@ -90,7 +90,7 @@ ldapadd -x -W -D "cn=doej,dc=babbage,dc=augsburg,dc=edu" -f ldapGroupToadd.ldif
 ```
 You have now successfully added a group to the LDAP!
 
-#### Add the User to the New Group
+#### Add the User to the New Group (FIX COMMAND INFO! NEEDS TO BE ADMINISTRATOR, NOT doej!)
 
 Now we will add the user we created to the group we created. Again we will make an LDIF file that will let the LDAP know we are modifying the group to add a user to it. Below is an example of what the LDIF file will look like.
 
