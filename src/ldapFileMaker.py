@@ -112,43 +112,6 @@ def bad_parameters():
     print("Require 7 arguments to make files for adding user/group to LDAP")
 
 
-##############################################################################
-# This function test the output of the ldapuserfilemaker() function. It has
-# canned data and will populate the output file with it so you can see how
-# the layout will look.
-##############################################################################
-def test_ldap_group_file_maker():
-
-    username = "doej"
-    gid = "1000"
-    ldap_group_file_maker(username, gid)
-
-
-##############################################################################
-# This function test the output of the ldapuserfilemaker() function. It has
-# canned data and will populate the output file with it so you can see how
-# the layout will look.
-##############################################################################
-def test_ldap_user_file_maker():
-
-    first_name = "John"
-    last_name = "Doe"
-    user_name = "doej"
-    uid = "1000"
-    gid = "1000"
-    ldap_user_file_maker(first_name, last_name, user_name, uid, gid)
-
-
-##############################################################################
-# This function test the output of the addUserToGroup() function. It has
-# canned data and will populate the output file with it so you can see how
-# the layout will look.
-##############################################################################
-def test_add_user_to_group():
-
-    username = "doej"
-    add_user_to_group(username)
-
 
 ##############################################################################
 #
@@ -192,4 +155,5 @@ def main():
         bad_parameters()
 
 
-main()
+if __name__ == '__main__':
+    main()
