@@ -141,6 +141,7 @@ def main():
         # sys.argv[5] - user pw    #
         # sys.argv[6] - admin pw   #
         ############################
+        print("args : " + str(sys.argv))
         ldap_user_file_maker(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[4])
         ldap_group_file_maker(sys.argv[3], sys.argv[4])
         add_user_to_group(sys.argv[3])

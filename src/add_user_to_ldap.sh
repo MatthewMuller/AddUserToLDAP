@@ -2,8 +2,6 @@
 # This script will add a user to the ldap
 #########################################
 
-
-
 # call python program to get info from user
 userinput=$(python3 userinputgui.py 2>&1);
 
@@ -22,6 +20,9 @@ uid=$(sshpass -p ${arr[4]} ssh -t -o LogLevel=QUIET administrator@141.224.38.247
 
 #Update password for user (NOTE: we run a dummy command to get the admin password in, and then we can run sudo without a password needed)
 sshpass -p ${arr[4]} ssh -t -o LogLevel=QUIET administrator@141.224.38.247 "echo ${arr[4]} | sudo -S echo ${arr[2]}; (echo ${arr[3]}; echo ${arr[3]};) | sudo passwd ${arr[2]}"
+
+##########################################
+#	ldif file creation and addition
 ##########################################
 
 # make the ldif files for the ldap server
