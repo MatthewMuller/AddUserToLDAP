@@ -27,6 +27,68 @@ sshpass -p ${arr[4]} ssh -t -o LogLevel=QUIET administrator@141.224.38.247 "echo
 
 # make the ldif files for the ldap server
 python3 ldapFileMaker.py ${arr[0]} ${arr[1]} ${arr[2]} $uid ${arr[3]} ${arr[4]}
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+
+
+
+
+
+
+
+
+
+
+
+
 
 # copy the ldif files over to babbage
 sshpass -p ${arr[4]} scp -r $PWD/LDIFFiles administrator@141.224.38.247:/home/administrator

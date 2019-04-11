@@ -96,7 +96,7 @@ def add_user_button_pressed(fn, ln, un, pw, vp, ap):
 
     # Check to see if the last name is in the user name. If not, warn the
     # user the username could possibly be incorrect
-    if str(ln.get()) not in str(un.get()):
+    if str(ln.get().lower()) not in str(un.get().lower()):
         messagebox.showinfo("Warning!", "The username does not contain the last name! The entry might not be correct.")
 
     # Verify with the user they truly want to add new user to LDAP
