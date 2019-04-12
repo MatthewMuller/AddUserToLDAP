@@ -88,6 +88,11 @@ def add_user_button_pressed(fn, ln, un, pw, vp, ap):
         messagebox.showinfo("Passwords Don't Match!", "The passwords entered by the user do not match!")
         return
 
+    # If the password contains a space, let the user know and go back to main gui
+    if " " in pw.get():
+        messagebox.showinfo("Passwords Contains a Space!", "The password is not allowed to contain a space!")
+        return
+
     # If any of the fields are empty, let the user know and go back to main gui
     if fn.index("end") == 0 or ln.index("end") == 0 or un.index("end") == 0 \
             or pw.index("end") == 0 or vp.index("end") == 0 or ap.index("end") == 0:
@@ -119,10 +124,10 @@ def pipe_input_to_script(fn, ln, un, pw, ap):
     # TODO write a function that pipes the user input to the bash script
     # This needs to be tested inside of a bash script
     # Output will collect these in an array and terminate at sentinel value -1
-    sys.stderr.write(fn.get() + ",")
-    sys.stderr.write(ln.get() + ",")
-    sys.stderr.write(un.get() + ",")
-    sys.stderr.write(pw.get() + ",")
+    sys.stderr.write(fn.get() + " ")
+    sys.stderr.write(ln.get() + " ")
+    sys.stderr.write(un.get() + " ")
+    sys.stderr.write(pw.get() + " ")
     sys.stderr.write(ap.get())
 
     exit()
@@ -157,18 +162,7 @@ def test_pipe_input_to_script():
 '''
 Main driver that builds and launches the gui
 '''
-
-
 if __name__ == "__main__":
-
-    ##########################
-    #      DEBUG AREA        #
-    ##########################
-    #test_pipe_input_to_script()
-
-    ##########################
-    #      MAIN PROGRAM      #
-    ##########################
 
     inputWindow = tk.Tk()
     inputWindow = gui(inputWindow)

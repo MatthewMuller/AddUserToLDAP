@@ -6,7 +6,7 @@
 userinput=$(python3 userinputgui.py 2>&1);
 
 #Split the userinput into values in an array
-IFS=',' read -ra arr<<< "$userinput"
+IFS=' ' read -ra arr<<< "$userinput"
 
 ##########################################
 #	SSH In to add user to babbage
