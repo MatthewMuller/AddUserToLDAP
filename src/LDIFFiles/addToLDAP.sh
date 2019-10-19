@@ -3,7 +3,7 @@ echo "-Add User-"
 ldapadd -x -w Hex6b6e6f6c6c -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -f /home/administrator/LDIFFiles/ldapUserEntry.ldif;
 
 echo "-Set User PW-"
-ldappasswd -s hi -w Hex6b6e6f6c6c -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -x "uid=herronm,ou=users,dc=babbage,dc=augsburg,dc=edu";
+ldappasswd -s pxe -w Hex6b6e6f6c6c -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -x "uid=pxe,ou=users,dc=babbage,dc=augsburg,dc=edu";
 
 echo "-Add Group-"
 ldapadd -x -w Hex6b6e6f6c6c -D "cn=admin,dc=babbage,dc=augsburg,dc=edu" -f /home/administrator/LDIFFiles/ldapGroupEntry.ldif;

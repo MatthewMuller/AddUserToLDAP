@@ -18,13 +18,13 @@ def test_ldap_group_file_maker():
     ldapFileMaker.ldap_group_file_maker(username, gid)  # Make file
     print("Testing ldap_group_file_maker  ", end="")
 
-    #Perform the test
+    # Perform the test
     try:
         f = open("ldapGroupEntry.ldif")
         assert f.read() == "dn: cn=doej,ou=groups,dc=babbage,dc=augsburg,dc=edu\n" \
-                    "objectClass: top\n" \
-                    "objectClass: posixGroup\n" \
-                    "gidNumber: 1000"
+                           "objectClass: top\n" \
+                           "objectClass: posixGroup\n" \
+                           "gidNumber: 1000"
         print_green("--Test passed")
     except IOError:
         print_red("--The file ldapGroupEntry.ldif could not be found by test")
@@ -36,7 +36,6 @@ def test_ldap_group_file_maker():
         os.remove("ldapGroupEntry.ldif")
     except OSError:
         print_red("--ldapGroupEntry.ldif could not be deleted or doesn't exist")
-
 
 
 def test_ldap_user_file_maker():
@@ -59,20 +58,20 @@ def test_ldap_user_file_maker():
 
     try:
         f = open("ldapUserEntry.ldif")
-        assert f.read() ==  "dn: uid=doej,ou=users,dc=babbage,dc=augsburg,dc=edu\n"\
-                            "objectClass: posixAccount\n"\
-                            "objectClass: inetOrgPerson\n"\
-                            "objectClass: organizationalPerson\n"\
-                            "objectClass: Person\n"\
-                            "loginShell: /bin/bash\n"\
-                            "uid: doej\n"\
-                            "cn: doej\n"\
-                            "gecos: John Doe\n"\
-                            "uidNumber: 1000\n"\
-                            "gidNumber: 1000\n"\
-                            "sn: Doe\n"\
-                            "givenName: John\n"\
-                            "homeDirectory: /nfs/home/doej"
+        assert f.read() == "dn: uid=doej,ou=users,dc=babbage,dc=augsburg,dc=edu\n" \
+                           "objectClass: posixAccount\n" \
+                           "objectClass: inetOrgPerson\n" \
+                           "objectClass: organizationalPerson\n" \
+                           "objectClass: Person\n" \
+                           "loginShell: /bin/bash\n" \
+                           "uid: doej\n" \
+                           "cn: doej\n" \
+                           "gecos: John Doe\n" \
+                           "uidNumber: 1000\n" \
+                           "gidNumber: 1000\n" \
+                           "sn: Doe\n" \
+                           "givenName: John\n" \
+                           "homeDirectory: /nfs/home/doej"
         print_green("--Test passed")
     except IOError:
         print_red("--The file ldapUserEntry.ldif could not be found by test")
@@ -103,10 +102,10 @@ def test_add_user_to_group():
     # Perform the test
     try:
         f = open("ldapAddToGroup.ldif")
-        assert f.read() ==  "dn: cn=doej,ou=groups,dc=babbage,dc=augsburg,dc=edu\n"\
-                            "changetype: modify\n"\
-                            "add: uid\n"\
-                            "uid: doej"
+        assert f.read() == "dn: cn=doej,ou=groups,dc=babbage,dc=augsburg,dc=edu\n" \
+                           "changetype: modify\n" \
+                           "add: uid\n" \
+                           "uid: doej"
         print_green("--Test passed")
     except IOError:
         print_red("--The file ldapAddToGroup.ldif could not be found by test")
@@ -144,9 +143,9 @@ def main():
     """
 
     print("\n***BEGINNING TEST***\n")
-    test_ldap_group_file_maker()    # Test the group file maker to see output
+    test_ldap_group_file_maker()  # Test the group file maker to see output
     test_ldap_user_file_maker()  # Test the user file maker to see output
-    test_add_user_to_group()        # Test the add user to group file maker
+    test_add_user_to_group()  # Test the add user to group file maker
 
 
 if __name__ == '__main__':

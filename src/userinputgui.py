@@ -167,5 +167,3 @@ if __name__ == "__main__":
     inputWindow = tk.Tk()
     inputWindow = gui(inputWindow)
     inputWindow.mainloop()
-
-
